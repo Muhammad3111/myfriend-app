@@ -58,11 +58,39 @@ router.post(
   }
 );
 
+// router.get("/products", async (req: Request, res: Response) => {
+//   try {
+//     // "sold" bo'lmagan mahsulotlar MongoDB so'rovi bilan olinadi
+//     const availableProducts = await Product.find({ sold: false });
+
+//     res.status(200).json(availableProducts);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Serverda xatolik yuz berdi" });
+//   }
+// });
+
 router.get("/products", async (req: Request, res: Response) => {
   try {
-    // "sold" bo'lmagan mahsulotlar MongoDB so'rovi bilan olinadi
-    const availableProducts = await Product.find({ sold: false });
-
+    const availableProducts = await Product.aggregate([
+      {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as: "category",
+        },
+      },
+      {
+        $unwind: "$category", // Mahsulotlar ro'yxatini unniting
+      },
+      {
+        $match: {
+          category: { $exists: true }, // Agar kategoriya mavjud bo'lsa
+          sold: false, // va mahsulot sotilmagan bo'lsa
+        },
+      },
+    ]);
     res.status(200).json(availableProducts);
   } catch (error) {
     console.error(error);
@@ -75,8 +103,26 @@ router.get(
   verifyToken,
   async (req: Request, res: Response) => {
     try {
-      const soldProducts = await Product.find({ sold: true });
-      res.status(200).json(soldProducts);
+      const availableProducts = await Product.aggregate([
+        {
+          $lookup: {
+            from: "categories",
+            localField: "category",
+            foreignField: "_id",
+            as: "category",
+          },
+        },
+        {
+          $unwind: "$category", // Mahsulotlar ro'yxatini unniting
+        },
+        {
+          $match: {
+            category: { $exists: true }, // Agar kategoriya mavjud bo'lsa
+            sold: true, // va mahsulot sotilmagan bo'lsa
+          },
+        },
+      ]);
+      res.status(200).json(availableProducts);
     } catch (error) {
       res.status(500).json({ message: "Serverda xatolik yuz berdi" });
     }
