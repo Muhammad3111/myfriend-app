@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoIosArrowDropleft, IoIosArrowDroprightCircle } from "react-icons/io";
 

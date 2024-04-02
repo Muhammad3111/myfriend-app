@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "../Modal";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";

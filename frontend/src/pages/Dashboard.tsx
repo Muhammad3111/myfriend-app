@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { CiBoxes, CiBoxList } from "react-icons/ci";
 import { GiMoneyStack, GiTakeMyMoney } from "react-icons/gi";
 import { MdOutlineMoneyOff } from "react-icons/md";
