@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { instance } from "./baseURL";
 import { FormTypes } from "./components/LoginForm";
 import { CategoryTypes } from "./components/categories/AddCategory";
@@ -43,16 +42,12 @@ export const validateToken = async () => {
 };
 
 export const signOut = async () => {
-  const response = await instance
-    .post(`/auth/logout`, {}, { withCredentials: true })
-    .then(() => {
-      toast.success("Chiqish bajarildi");
-    })
-    .catch(() => {
-      throw new Error("Error during sign out");
-    });
-
-  return response;
+  const response = await instance.post(
+    `/auth/logout`,
+    {},
+    { withCredentials: true }
+  );
+  return response.data;
 };
 
 export const report = async () => {

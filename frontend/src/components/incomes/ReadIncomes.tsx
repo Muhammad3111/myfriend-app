@@ -45,8 +45,11 @@ const ReadIncomes = () => {
   const filteredProducts = searchValue ? searchProducts(searchValue) : incomes;
   return (
     <div className="flex flex-col gap-4 items-start">
-      <div className="flex justify-end w-full">
-        <label htmlFor="search" className="flex items-center gap-4 text-lg font-semibold">
+      <div className="flex justify-end w-full sx:flex-col gap-4">
+        <label
+          htmlFor="search"
+          className="flex items-center gap-4 text-lg font-semibold"
+        >
           Izlash
           <input
             type="search"
@@ -56,43 +59,45 @@ const ReadIncomes = () => {
           />
         </label>
       </div>
-      <div className="flex flex-col border rounded-lg shadow-lg w-full">
-        <div className="grid grid-cols-8 divide-x-2 text-center">
-          <div className="col-span-1 text-lg font-semibold p-2">
-            Mahsulot nomi
+      <div className="sx:overflow-auto sx:w-full">
+        <div className="flex flex-col border rounded-lg shadow-lg w-max">
+          <div className="grid grid-cols-8 divide-x-2 text-center">
+            <div className="col-span-1 text-lg font-semibold p-2">
+              Mahsulot nomi
+            </div>
+            <div className="col-span-1 text-lg font-semibold p-2">
+              Olingan narx
+            </div>
+            <div className="col-span-1 text-lg font-semibold p-2">Xarajat</div>
+            <div className="col-span-1 text-lg font-semibold p-2">Narx</div>
+            <div className="col-span-1 text-lg font-semibold p-2">IMEI</div>
+            <div className="col-span-1 text-lg font-semibold p-2">
+              Battarey foizi
+            </div>
+            <div className="col-span-1 text-lg font-semibold p-2">Bo'limi</div>
+            <div className="col-span-1 text-lg font-semibold p-2">Xarakat</div>
           </div>
-          <div className="col-span-1 text-lg font-semibold p-2">
-            Olingan narx
-          </div>
-          <div className="col-span-1 text-lg font-semibold p-2">Xarajat</div>
-          <div className="col-span-1 text-lg font-semibold p-2">Narx</div>
-          <div className="col-span-1 text-lg font-semibold p-2">IMEI</div>
-          <div className="col-span-1 text-lg font-semibold p-2">
-            Battarey foizi
-          </div>
-          <div className="col-span-1 text-lg font-semibold p-2">Bo'limi</div>
-          <div className="col-span-1 text-lg font-semibold p-2">Xarakat</div>
+          {filteredProducts.map((item) => (
+            <div className="grid grid-cols-8 text-center" key={item._id}>
+              <div className="col-span-1 border-t-2 p-2">{item.title}</div>
+              <div className="col-span-1 border-t-2 p-2">
+                {item.price_received}
+              </div>
+              <div className="col-span-1 border-t-2 p-2">{item.expense}</div>
+              <div className="col-span-1 border-t-2 p-2">{item.price}</div>
+              <div className="col-span-1 border-t-2 p-2">{item.imei}</div>
+              <div className="col-span-1 border-t-2 p-2">
+                {item.percent_of_battery}
+              </div>
+              <div className="col-span-1 border-t-2 p-2">
+                {item.category.title}
+              </div>
+              <div className="col-span-1 border-t-2 p-2 flex items-center gap-3">
+                <RestoreProduct {...item} category={item.category._id} />
+              </div>
+            </div>
+          ))}
         </div>
-        {filteredProducts.map((item) => (
-          <div className="grid grid-cols-8 text-center" key={item._id}>
-            <div className="col-span-1 border-t-2 p-2">{item.title}</div>
-            <div className="col-span-1 border-t-2 p-2">
-              {item.price_received}
-            </div>
-            <div className="col-span-1 border-t-2 p-2">{item.expense}</div>
-            <div className="col-span-1 border-t-2 p-2">{item.price}</div>
-            <div className="col-span-1 border-t-2 p-2">{item.imei}</div>
-            <div className="col-span-1 border-t-2 p-2">
-              {item.percent_of_battery}
-            </div>
-            <div className="col-span-1 border-t-2 p-2">
-              {item.category.title}
-            </div>
-            <div className="col-span-1 border-t-2 p-2 flex items-center gap-3">
-              <RestoreProduct {...item} category={item.category._id} />
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );

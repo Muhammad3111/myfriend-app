@@ -54,7 +54,7 @@ function AddProduct() {
 
   const categories: CategoryTypes[] = data;
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 sx:pb-16">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Mahsulot qo'shish</h1>
         <button
@@ -64,7 +64,10 @@ function AddProduct() {
           Orqaga
         </button>
       </div>
-      <form className="grid grid-cols-2 gap-2 w-1/2" onSubmit={onSubmit}>
+      <form
+        className="grid grid-cols-2 gap-2 w-1/2 sx:w-full sx:grid-cols-1"
+        onSubmit={onSubmit}
+      >
         <label htmlFor="title" className="flex flex-col gap-1 col-span-1">
           Mahsulot nomini yozing
           <input
@@ -157,7 +160,7 @@ function AddProduct() {
         </label>
         <button
           type="submit"
-          className="rounded-lg bg-main-color border p-2 text-lg w-full text-white font-semibold col-span-2"
+          className="rounded-lg bg-main-color border p-2 text-lg w-full text-white font-semibold col-span-2 sx:col-span-1"
         >
           Qo'shish
         </button>

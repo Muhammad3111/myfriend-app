@@ -6,6 +6,9 @@ export default {
       colors: {
         "main-color": "#5932EA",
       },
+      screens: {
+        sx: { max: "640px" },
+      },
     },
   },
   plugins: [],

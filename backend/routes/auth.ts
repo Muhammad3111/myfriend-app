@@ -54,14 +54,14 @@ router.post(
 );
 
 router.get("/validate-token", verifyToken, (req: Request, res: Response) => {
-  res.status(200).send({ userId: req.userId });
+  res.status(200).send({ userId: true });
 });
 
 router.post("/logout", (req: Request, res: Response) => {
   res.cookie("auth_token", "", {
     expires: new Date(0),
   });
-  res.send();
+  res.status(200).send({ userId: false });
 });
 
 export default router;

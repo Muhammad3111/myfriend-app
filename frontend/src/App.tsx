@@ -2,13 +2,15 @@ import { Route, Routes } from "react-router-dom";
 import { Bounce, ToastContainer } from "react-toastify";
 import Login from "./pages/Login";
 import Layout from "./pages/Layout";
+import PrivateRoute from "./PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import Categories from "./pages/Categories";
 import Products from "./pages/Products";
+import AddProduct from "./components/products/AddProduct";
 import Incomes from "./pages/Incomes";
 import Expenses from "./pages/Expenses";
-import SoldProducts from "./pages/SoldProducts";
-import AddProduct from "./components/products/AddProduct";
+
+
 
 function App() {
   return (
@@ -30,13 +32,54 @@ function App() {
       <Routes>
         <Route index element={<Login />} />
         <Route element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/add-product" element={<AddProduct />} />
-          <Route path="/incomes" element={<Incomes />} />
-          <Route path="/expenses" element={<Expenses />} />
-          <Route path="/sold-products" element={<SoldProducts />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/categories"
+            element={
+              <PrivateRoute>
+                <Categories />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <PrivateRoute>
+                <Products />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/products/add-product"
+            element={
+              <PrivateRoute>
+                <AddProduct />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/incomes"
+            element={
+              <PrivateRoute>
+                <Incomes />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/expenses"
+            element={
+              <PrivateRoute>
+                <Expenses />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </div>

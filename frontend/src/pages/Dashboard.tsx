@@ -22,7 +22,10 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-3 gap-4 animate-pulse" role="status">
+      <div
+        className="grid grid-cols-3 gap-4 animate-pulse sx:grid-cols-1"
+        role="status"
+      >
         <div className="h-24 bg-gray-200 col-span-1 rounded-lg"></div>
         <div className="h-24 bg-gray-200 col-span-1 rounded-lg"></div>
         <div className="h-24 bg-gray-200 col-span-1 rounded-lg"></div>
@@ -46,7 +49,7 @@ export default function Dashboard() {
   const reports: ReportTypes = data;
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 sx:grid-cols-1 gap-4 sx:pb-16">
       <div className="col-span-1 rounded-lg shadow-lg p-4 flex items-center gap-4 border">
         <div className="bg-green-400/30 w-16 h-16 rounded-full flex items-center justify-center ">
           <CiBoxes className="text-5xl text-green-600" />

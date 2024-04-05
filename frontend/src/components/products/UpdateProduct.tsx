@@ -76,7 +76,7 @@ const UpdateProduct = ({ ...restProps }: UpdateProductTypes) => {
       </button>
       {show && (
         <Modal close={() => openModal()}>
-          <form className="grid grid-cols-2 gap-2" onSubmit={onSubmit}>
+          <form className="grid grid-cols-2 gap-2 sx:grid-cols-1" onSubmit={onSubmit}>
             <label htmlFor="title" className="flex flex-col gap-1 col-span-1">
               Mahsulot nomini yozing
               <input
@@ -156,7 +156,7 @@ const UpdateProduct = ({ ...restProps }: UpdateProductTypes) => {
             </label>
             <button
               type="submit"
-              className="rounded-lg bg-main-color border p-2 text-lg w-full text-white font-semibold col-span-2"
+              className="rounded-lg bg-main-color border p-2 text-lg w-full text-white font-semibold col-span-2 sx:col-span-1"
             >
               Saqlash
             </button>

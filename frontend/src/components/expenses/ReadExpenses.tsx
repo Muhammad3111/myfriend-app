@@ -19,19 +19,21 @@ const ReadExpenses = () => {
   return (
     <div className="flex flex-col w-full px-4 gap-2">
       <h1 className="text-md">Chiqimlar ro'yxati</h1>
-      {expenses.map((c) => (
-        <div
-          key={c._id}
-          className="flex items-center justify-between border p-2 rounded-lg"
-        >
-          <h1 className="text-lg font-semibold">{c.title}</h1>
-          <p className="text-lg font-semibold">{c.amount}$</p>
-          <div className="flex items-center gap-4">
-            <UpdateExpense _id={c._id} title={c.title} amount={c.amount} />
-            <DeleteExpense id={c._id} />
+      <div className="sx:overflow-auto sx:w-full">
+        {expenses.map((c) => (
+          <div
+            key={c._id}
+            className="flex items-center justify-between border p-2 rounded-lg sx:w-full"
+          >
+            <h1 className="text-lg font-semibold">{c.title}</h1>
+            <p className="text-lg font-semibold">{c.amount}$</p>
+            <div className="flex items-center gap-4">
+              <UpdateExpense _id={c._id} title={c.title} amount={c.amount} />
+              <DeleteExpense id={c._id} />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
