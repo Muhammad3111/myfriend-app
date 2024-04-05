@@ -5,8 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
-    "start": "npx ts-node index.ts",
-    "build": "npm install"
+    "start": "npx ts-node index.ts"
   },
   "keywords": [],
   "author": "",
