@@ -18,7 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://dilmurod3280.netlify.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://dilmurod3280.netlify.app",
+      "https://dilmurod-frontend.vercel.app",
+    ],
     credentials: true,
   })
 );
