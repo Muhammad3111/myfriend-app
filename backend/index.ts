@@ -31,6 +31,10 @@ app.use("/api/routes", productRoute);
 app.use("/api/routes", expenseRoute);
 app.use("/api/routes", reportRoute);
 
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
 app.listen(8000, () => {
   console.log("Server running on port 8000");
 });
