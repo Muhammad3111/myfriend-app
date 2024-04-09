@@ -41,7 +41,8 @@ router.post(
 
       res.cookie("auth_token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true, // HTTPS orqali yuborilishi kerak
+        sameSite: "lax",
         maxAge: 86400000,
       });
 
@@ -61,7 +62,7 @@ router.post("/logout", (req: Request, res: Response) => {
   res.cookie("auth_token", "", {
     expires: new Date(0),
   });
-  res.status(200).send({ userId: false });
+  res.send();
 });
 
 export default router;
