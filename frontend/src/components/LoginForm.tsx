@@ -40,7 +40,7 @@ function LoginForm() {
 
   return (
     <div className="bg-white rounded-3xl flex shadow-lg overflow-hidden border">
-      <div className="flex flex-col gap-4 p-20">
+      <div className="flex flex-col gap-4 p-20 sx:p-10">
         <h1 className="text-black text-4xl text-center font-bold">
           Xush kelibsiz
         </h1>
@@ -94,7 +94,7 @@ function LoginForm() {
           </button>
         </form>
       </div>
-      <div className="bg-gray-100 p-20">
+      <div className="bg-gray-100 p-20 sx:hidden">
         <img src={LoginIMG} alt="login-img" className="w-full h-full" />
       </div>
     </div>

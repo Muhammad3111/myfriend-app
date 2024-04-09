@@ -33,12 +33,7 @@ export const validateToken = async () => {
   const response = await instance.get(`/auth/validate-token`, {
     withCredentials: true,
   });
-
-  if (response.status === 200) {
-    return response.data;
-  } else {
-    throw new Error("Token invalid");
-  }
+  return response;
 };
 
 export const signOut = async () => {

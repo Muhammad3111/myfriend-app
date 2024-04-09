@@ -13,11 +13,12 @@ export const AppContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { isError } = useQuery({
+  const { isError, data } = useQuery({
     queryKey: ["validateToken"],
     queryFn: apiClient.validateToken,
   });
 
+  console.log(data);
   return (
     <AppContext.Provider
       value={{
