@@ -25,7 +25,9 @@ export const signIn = async (formData: FormTypes) => {
 };
 
 export const validateToken = async () => {
-  const response = await instance.get(`/auth/validate-token`);
+  const response = await instance.get(`/auth/validate-token`, {
+    withCredentials: true,
+  });
   return response;
 };
 

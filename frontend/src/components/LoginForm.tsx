@@ -24,10 +24,11 @@ function LoginForm() {
 
   const mutation = useMutation({
     mutationFn: apiClient.signIn,
-    onSuccess: async () => {
+    onSuccess: async (data, variables, context) => {
       toast.success("Kirish bajarildi");
       await queryClient.invalidateQueries({ queryKey: ["validateToken"] });
       navigate("/dashboard");
+      console.log(data, variables, context);
     },
     onError: () => {
       toast.error("Kirish bajarilmadi");
