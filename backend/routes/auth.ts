@@ -46,7 +46,7 @@ router.post(
         maxAge: 86400000,
       });
 
-      res.status(200).json({ userId: user._id });
+      res.status(200).json({ userId: user._id, secretKey: token });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Someting went wrong" });
