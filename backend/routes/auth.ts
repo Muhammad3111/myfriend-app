@@ -42,7 +42,7 @@ router.post(
       res.cookie("auth_token", token, {
         httpOnly: true,
         secure: true, // HTTPS orqali yuborilishi kerak
-        sameSite: "lax",
+        sameSite: "none",
         maxAge: 86400000,
       });
 
