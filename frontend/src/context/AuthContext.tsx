@@ -1,11 +1,9 @@
-import React, { Dispatch, SetStateAction, useContext, useState } from "react";
+import React, { useContext } from "react";
 import * as apiClient from "../apiClient";
 import { useQuery } from "@tanstack/react-query";
 
 type AppContext = {
   isLoggedIn: boolean;
-  token: string;
-  setToken: Dispatch<SetStateAction<string>>;
 };
 
 const AppContext = React.createContext<AppContext | undefined>(undefined);
@@ -15,7 +13,6 @@ export const AppContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [token, setToken] = useState<string>("");
   const { isError } = useQuery({
     queryKey: ["validateToken"],
     queryFn: apiClient.validateToken,
@@ -25,8 +22,6 @@ export const AppContextProvider = ({
     <AppContext.Provider
       value={{
         isLoggedIn: !isError,
-        token,
-        setToken,
       }}
     >
       {children}

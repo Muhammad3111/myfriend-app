@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../context/AuthContext";
 
 export type FormTypes = {
   email: string;
@@ -15,7 +14,6 @@ export type FormTypes = {
 
 function LoginForm() {
   const [showPassowrd, setShowPassword] = useState<boolean>(false);
-  const { setToken } = useAppContext();
   const navigate = useNavigate();
   const {
     register,
@@ -26,11 +24,10 @@ function LoginForm() {
 
   const mutation = useMutation({
     mutationFn: apiClient.signIn,
-    onSuccess: async (data) => {
+    onSuccess: async () => {
       toast.success("Kirish bajarildi");
       await queryClient.invalidateQueries({ queryKey: ["validateToken"] });
       navigate("/dashboard");
-      setToken(data?.secretKey);
     },
     onError: () => {
       toast.error("Kirish bajarilmadi");
