@@ -45,11 +45,11 @@ export default function Sidebar() {
           </li>
           <li className={style(3)} onClick={() => changeMenu(3, "/incomes")}>
             <GiReceiveMoney className="text-xl" />
-            Kirimlar
+            Sotilgan Mahsulotlar
           </li>
           <li className={style(4)} onClick={() => changeMenu(4, "/expenses")}>
             <GiPayMoney className="text-xl" />
-            Chiqimlar
+            Xarajatlar
           </li>
           {/* <li className={style(5)} onClick={() => changeMenu(5, "sold-products")}>
           <CiBoxList className="text-xl" />
