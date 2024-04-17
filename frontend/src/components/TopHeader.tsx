@@ -12,6 +12,8 @@ export default function TopHeader() {
     onSuccess: async () => {
       toast.success("Chiqish bajarildi");
       await queryClient.invalidateQueries({ queryKey: ["validateToken"] });
+      document.cookie =
+        "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     },
     onError: () => {
       toast.error("Chiqish bajarilmadi");

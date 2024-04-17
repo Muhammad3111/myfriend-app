@@ -21,19 +21,17 @@ export const signIn = async (formData: FormTypes) => {
       "Content-Type": "application/json",
     },
   });
-  return response.data;
+  return response;
 };
 
 export const validateToken = async () => {
-  const response = await instance.get(`/auth/validate-token`, {
-    withCredentials: true,
-  });
+  const response = await instance.get(`/auth/validate-token`);
   return response;
 };
 
 export const signOut = async () => {
   const response = await instance.post(`/auth/logout`);
-  return response.data;
+  return response;
 };
 
 export const report = async () => {
@@ -57,7 +55,7 @@ export const addCategory = async ({ title }: CategoryTypes) => {
 
 export const getCategory = async () => {
   const response = await instance.get("routes/category");
-  return response.data;
+  return response.data || [];
 };
 
 export const deleteCategory = async (id: string) => {
@@ -72,7 +70,7 @@ export const updateCategory = async ({ _id, title }: UpdateCategoryTypes) => {
 
 export const getProducts = async () => {
   const response = await instance.get("routes/products");
-  return response.data;
+  return response.data || [];
 };
 
 export const addProduct = async (formData: ProductTypes) => {
@@ -95,12 +93,12 @@ export const deletedProduct = async (id: string) => {
 
 export const getSoldProducts = async () => {
   const response = await instance.get("routes/sold-products");
-  return response.data;
+  return response.data || [];
 };
 
 export const getExpenses = async () => {
   const response = await instance.get("routes/expense");
-  return response.data;
+  return response.data || [];
 };
 
 export const addExpense = async (formData: ExpenseTypes) => {

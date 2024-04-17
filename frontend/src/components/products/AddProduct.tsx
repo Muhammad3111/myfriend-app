@@ -3,6 +3,7 @@ import * as apiClient from "../../apiClient";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 type CategoryTypes = {
   _id: string;
@@ -20,6 +21,7 @@ export type ProductTypes = {
 };
 
 function AddProduct() {
+  const [loading, setLoading] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -37,13 +39,16 @@ function AddProduct() {
     onSuccess: async () => {
       toast.success("Mahsulot qo'shildi");
       await queryClient.invalidateQueries({ queryKey: ["Products"] });
+      setLoading(false);
     },
     onError: () => {
       toast.error("Mahsulot qo'shishda xatolik yuz berdi");
+      setLoading(false);
     },
   });
 
   const onSubmit = handleSubmit((data) => {
+    setLoading(true);
     ProductMutation.mutate(data);
     reset();
   });
@@ -159,10 +164,11 @@ function AddProduct() {
           )}
         </label>
         <button
+          disabled={loading}
           type="submit"
-          className="rounded-lg bg-main-color border p-2 text-lg w-full text-white font-semibold col-span-2 sx:col-span-1"
+          className="rounded-lg bg-main-color border p-2 text-lg w-full text-white font-semibold col-span-2 sx:col-span-1 disabled:bg-main-color/55"
         >
-          Qo'shish
+          {loading ? "Yuklanmoqda..." : "Qo'shish"}
         </button>
       </form>
     </div>

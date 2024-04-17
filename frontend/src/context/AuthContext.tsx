@@ -19,7 +19,6 @@ export const AppContextProvider = ({
   const { isError } = useQuery({
     queryKey: ["validateToken"],
     queryFn: apiClient.validateToken,
-    retry: false,
   });
 
   return (
