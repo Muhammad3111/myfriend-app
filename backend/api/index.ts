@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://dilmurod-frontend.vercel.app"],
+    origin: ["http://localhost:5173", "https://d3280.vercel.app"],
     credentials: true,
   })
 );
