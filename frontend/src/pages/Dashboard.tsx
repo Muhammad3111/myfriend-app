@@ -41,7 +41,12 @@ export default function Dashboard() {
     return (
       <div className="flex flex-col gap-1">
         <p>{title}</p>
-        <h1 className="text-2xl font-semibold">{value} $</h1>
+        <h1 className="text-2xl font-semibold">
+          {value} &nbsp;
+          {title === "Mahsulotlar" || title === "Sotilgan Mahsulotlar"
+            ? ""
+            : "$"}
+        </h1>
       </div>
     );
   };
